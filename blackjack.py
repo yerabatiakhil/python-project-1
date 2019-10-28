@@ -84,10 +84,10 @@ def take_bet(chips):
         try:
             chips.bet = int(input('How many chips would you like to bet? '))
         except ValueError:
-            print('Sorry, a bet must be an integer!')
+            print('Exepecting to be an integer!')
         else:
             if chips.bet > chips.total:
-                print("Sorry, your bet can't exceed",chips.total)
+                print("You dont have sufficient chips. You only have {}".format(chips.total))
             else:
                 break
 
@@ -117,13 +117,13 @@ def hit_or_stand(deck,hand):
 def show_some(player,dealer):
     print("\nDealer's Hand:")
     print(" <card hidden>")
-    print('',dealer.cards[1])  
-    print("\nPlayer's Hand:", *player.cards, sep='\n ')
+    print('',dealer.cards[1])                           # '', just used for spacing 
+    print("\nPlayer's Hand:", *player.cards, sep='\n ') # *used for printing every item in the collection
     
 def show_all(player,dealer):
-    print("\nDealer's Hand:", *dealer.cards, sep='\n ')
+    print("\nDealer's Hand:", *dealer.cards, sep='\n ')   
     print("Dealer's Hand =",dealer.value)
-    print("\nPlayer's Hand:", *player.cards, sep='\n ')
+    print("\nPlayer's Hand:", *player.cards, sep='\n ') # sep="\n" prints every item in a new line
     print("Player's Hand =",player.value)
     
 def player_busts(player,dealer,chips):
@@ -149,7 +149,7 @@ def push(player,dealer):
 
 while True:
     print('Welcome to BlackJack! Get as close to 21 as you can without going over!\n\
-    Dealer hits until she reaches 17. Aces count as 1 or 11.')
+    Dealer hits until 17 is reached. Aces count as 1 or 11.')
     
     # Create & shuffle the deck, deal two cards to each player
     deck = Deck()
